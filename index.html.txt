@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Apex Capital | Invest Smart. Grow Wealth.</title>
+    <!-- Google Fonts + Icons + Swiper (for testimonials) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            font-family: 'Inter', sans-serif;
+            color: #e0e0e0;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .heading-font {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* luxury gold accents */
+        .gold-text {
+            color: #d4af37;
+        }
+        .gold-border {
+            border-bottom: 2px solid #d4af37;
+            display: inline-block;
+            width: 70px;
+        }
+        .btn-gold {
+            background: linear-gradient(135deg, #d4af37, #b68b2c);
+            border: none;
+            padding: 14px 38px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            color: #0a0a0a;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .btn-gold:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(212, 175, 55, 0.5);
+            background: linear-gradient(135deg, #e5c258, #d4af37);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid #d4af37;
+            padding: 12px 32px;
+            border-radius: 50px;
+            color: #d4af37;
+            font-weight: 600;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+        .btn-outline:hover {
+            background: rgba(212, 175, 55, 0.1);
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
+        }
+
+        /* navbar glassmorphism */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 0;
+            flex-wrap: wrap;
+        }
+        .logo img {
+            height: 52px;
+            width: auto;
+            filter: drop-shadow(0 0 4px rgba(212,175,55,0.5));
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #f0f0f0;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: #d4af37;
+        }
+        .mobile-menu {
+            display: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #d4af37;
+        }
+
+        /* hero section */
+        .hero {
+            padding: 70px 0 100px;
+            background: radial-gradient(ellipse at 80% 30%, #141414 0%, #0a0a0a 90%);
+            position: relative;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-top: 20px;
+            max-width: 600px;
+            color: #ccc;
+        }
+
+        /* card luxury */
+        .investment-card, .why-card, .service-card {
+            background: rgba(20, 20, 20, 0.8);
+            backdrop-filter: blur(2px);
+            border-radius: 32px;
+            padding: 32px 24px;
+            transition: all 0.3s;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 20px 35px -15px rgba(0,0,0,0.5);
+        }
+        .investment-card:hover, .why-card:hover {
+            border-color: #d4af37;
+            transform: translateY(-6px);
+        }
+        .gold-icon {
+            color: #d4af37;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        /* grid layouts */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
+        }
+
+        /* cta section */
+        .cta-block {
+            background: linear-gradient(115deg, #0f0f0f, #1a1a1a);
+            border-radius: 48px;
+            padding: 70px 40px;
+            text-align: center;
+            margin: 60px 0;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        /* contact form */
+        .contact-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            margin: 50px 0;
+        }
+        .contact-info {
+            flex: 1;
+        }
+        .contact-form {
+            flex: 1;
+        }
+        input, textarea, select {
+            width: 100%;
+            background: #111;
+            border: 1px solid #2c2c2c;
+            border-radius: 24px;
+            padding: 14px 20px;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            margin-bottom: 18px;
+            transition: 0.2s;
+        }
+        input:focus, textarea:focus {
+            border-color: #d4af37;
+            outline: none;
+        }
+
+        /* ROI calculator */
+        .roi-card {
+            background: #0f0f0f;
+            border-radius: 32px;
+            padding: 30px;
+            border: 1px solid #2c2c2c;
+            margin-top: 40px;
+        }
+
+        footer {
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 50px 0 30px;
+            margin-top: 70px;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: white;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            z-index: 99;
+            transition: 0.2s;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.08);
+            background: #20b859;
+        }
+
+        @media (max-width: 980px) {
+            .nav-links {
+                display: none;
+            }
+            .mobile-menu {
+                display: block;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .container {
+                padding: 0 20px;
+            }
+        }
+        .swiper-slide {
+            background: #111;
+            padding: 28px;
+            border-radius: 28px;
+            border-left: 3px solid #d4af37;
+        }
+        .faq-item {
+            background: #111;
+            margin-bottom: 15px;
+            border-radius: 20px;
+            padding: 18px 24px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .faq-question {
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+        }
+        .faq-answer {
+            display: none;
+            margin-top: 12px;
+            color: #bbbbbb;
+        }
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #d4af37;
+        }
+        .address-highlight {
+            font-size: 1.1rem;
+            background: rgba(212, 175, 55, 0.1);
+            padding: 12px 16px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 20px;
+            border-left: 3px solid #d4af37;
+        }
+    </style>
+</head>
+<body>
+
+<!-- WhatsApp sticky -->
+<a href="https://wa.me/919059980243?text=Hello%20Apex%20Capital%2C%20I%20want%20to%20invest" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- Navigation -->
+<div class="container">
+    <div class="navbar">
+        <div class="logo">
+            <!-- logo as per brand: navy+gold stylized "A" -->
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Crect width='200' height='60' fill='none' /%3E%3Cpath d='M30,10 L48,48 L40,48 L36,36 L24,36 L20,48 L12,48 L30,10 Z M30,20 L26,32 L34,32 L30,20Z' fill='%23d4af37' /%3E%3Ccircle cx='30' cy='30' r='28' stroke='%23d4af37' stroke-width='1.5' fill='none' /%3E%3Ctext x='60' y='38' font-family='Poppins' font-weight='800' font-size='28' fill='%23d4af37'%3EAPEX CAPITAL%3C/text%3E%3C/svg%3E" alt="Apex Capital Logo" style="height: 58px;">
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#investment-plans">Investment Plans</a></li>
+            <li><a href="#why-us">Why Us</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#faq">FAQ</a></li>
+        </ul>
+        <div class="mobile-menu"><i class="fas fa-bars"></i></div>
+    </div>
+</div>
+
+<!-- Hero Section -->
+<section class="hero" id="home">
+    <div class="container">
+        <h1>Invest Smart. <span class="gold-text">Grow Wealth</span><br> with Apex Capital.</h1>
+        <p>Secure Investment Opportunities for Serious Investors</p>
+        <div style="margin-top: 35px; display: flex; gap: 20px; flex-wrap: wrap;">
+            <button class="btn-gold" id="heroInvestBtn">Start Investing <i class="fas fa-arrow-right"></i></button>
+            <button class="btn-outline" id="learnMoreBtn">Learn More</button>
+        </div>
+        <!-- trust badge micro -->
+        <div style="margin-top: 50px; display: flex; gap: 28px; flex-wrap: wrap; background: rgba(0,0,0,0.4); border-radius: 80px; padding: 14px 28px; width: fit-content;">
+            <span><i class="fas fa-shield-alt gold-text"></i> Capital Protection</span>
+            <span><i class="fas fa-chart-line gold-text"></i> 4% Monthly Returns</span>
+            <span><i class="fas fa-clock gold-text"></i> Flexible Withdrawals</span>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<div class="container" id="about">
+    <div style="text-align: center; margin-bottom: 40px;">
+        <span class="gold-border"></span>
+        <h2 style="margin-top: 20px;">About <span class="gold-text">Apex Capital</span></h2>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: center;">
+        <div style="flex: 1.2;">
+            <p style="font-size: 1.2rem; line-height: 1.6;">Apex Capital is a premier investment firm dedicated to delivering consistent, high-performance wealth solutions. With expert fund management, transparent systems, and a focus on capital protection, we provide serious investors an edge in today's dynamic markets. Our disciplined approach combines deep research, risk analytics, and active portfolio management to generate superior monthly returns.</p>
+            <p style="margin-top: 20px;"><i class="fas fa-check-circle gold-text"></i> SEBI Registered | <i class="fas fa-check-circle gold-text"></i> 5+ Years Track Record</p>
+        </div>
+        <div style="flex: 0.8; background: #111; border-radius: 32px; padding: 30px; text-align: center; border: 1px solid #d4af37;">
+            <i class="fas fa-chart-simple" style="font-size: 48px; color: #d4af37;"></i>
+            <div class="stat-number">?150Cr+</div>
+            <p>Assets Managed</p>
+            <div class="stat-number">2,000+</div>
+            <p>Active Investors</p>
+        </div>
+    </div>
+</div>
+
+<!-- Investment Plans Section (Services) -->
+<div class="container" id="investment-plans">
+    <div style="text-align: center; margin: 70px 0 30px;">
+        <span class="gold-border"></span>
+        <h2 style="margin-top: 20px;">Elite <span class="gold-text">Investment Plans</span></h2>
+        <p style="max-width: 600px; margin: 16px auto;">High returns, capital protection, and flexible access – designed for serious wealth creation.</p>
+    </div>
+    <div class="grid-3">
+        <div class="investment-card">
+            <i class="fas fa-chart-line gold-icon"></i>
+            <h3>Fixed Income Plan</h3>
+            <div style="margin: 20px 0;"><span class="stat-number">?1,00,000</span> <span style="color:#ccc;">Minimum</span></div>
+            <p><i class="fas fa-percent gold-text"></i> <strong>4% Monthly Returns</strong> (payout every month)</p>
+            <p><i class="fas fa-shield-alt gold-text"></i> Capital Protection Guarantee</p>
+            <p><i class="fas fa-hand-holding-usd gold-text"></i> Flexible Withdrawal Options</p>
+            <p><i class="fas fa-user-tie gold-text"></i> Expert Fund Management</p>
+            <button class="btn-outline" style="margin-top: 25px; width:100%;">Invest Now</button>
+        </div>
+        <div class="investment-card">
+            <i class="fas fa-chart-pie gold-icon"></i>
+            <h3>Wealth Accelerator</h3>
+            <div style="margin: 20px 0;"><span class="stat-number">?2,50,000</span> <span style="color:#ccc;">Minimum</span></div>
+            <p><i class="fas fa-percent gold-text"></i> <strong>5% – 6% Monthly Returns</strong> (compounding)</p>
+            <p><i class="fas fa-shield-alt gold-text"></i> Partial Capital Protection</p>
+            <p><i class="fas fa-chart-simple gold-text"></i> Priority Withdrawals</p>
+            <p><i class="fas fa-robot gold-text"></i> AI-assisted portfolio</p>
+            <button class="btn-outline" style="margin-top: 25px; width:100%;">Enquire Now</button>
+        </div>
+        <div class="investment-card">
+            <i class="fas fa-crown gold-icon"></i>
+            <h3>Institutional Plus</h3>
+            <div style="margin: 20px 0;"><span class="stat-number">?10,00,000+</span> <span style="color:#ccc;">Custom</span></div>
+            <p><i class="fas fa-chart-line gold-text"></i> Tailored returns up to 8% monthly</p>
+            <p><i class="fas fa-lock gold-text"></i> Full Capital Security</p>
+            <p><i class="fas fa-handshake gold-text"></i> Dedicated Relationship Manager</p>
+            <button class="btn-outline" style="margin-top: 25px; width:100%;">Contact Desk</button>
+        </div>
+    </div>
+</div>
+
+<!-- ROI CALCULATOR (financial tool) -->
+<div class="container">
+    <div class="roi-card">
+        <h3>?? <span class="gold-text">ROI Calculator</span> – Estimate Your Monthly Earnings</h3>
+        <div style="display: flex; flex-wrap: wrap; gap: 25px; margin-top: 20px;">
+            <div style="flex:1">
+                <label>Investment Amount (?)</label>
+                <input type="number" id="investAmount" value="100000" step="10000">
+            </div>
+            <div style="flex:1">
+                <label>Monthly Return Rate (%)</label>
+                <input type="number" id="returnRate" value="4" step="0.5">
+            </div>
+            <div style="flex:1">
+                <label>Projected Monthly Income</label>
+                <div style="background: #000; padding: 14px 20px; border-radius: 24px; font-size: 1.6rem; font-weight: bold; color: #d4af37;" id="roiResult">?4,000</div>
+            </div>
+        </div>
+        <p style="margin-top: 12px; font-size: 0.85rem;">*Illustrative calculation, actual returns subject to market performance.</p>
+    </div>
+</div>
+
+<!-- Why Choose Us Section -->
+<div class="container" id="why-us">
+    <div style="text-align: center; margin: 70px 0 30px;">
+        <span class="gold-border"></span>
+        <h2 style="margin-top: 20px;">Why <span class="gold-text">Choose Us</span></h2>
+    </div>
+    <div class="grid-4">
+        <div class="why-card"><i class="fas fa-users gold-icon"></i><h3>Professional Trading Team</h3><p>CFA charterholders & forex veterans with 15+ years experience.</p></div>
+        <div class="why-card"><i class="fas fa-eye gold-icon"></i><h3>Transparent System</h3><p>Real-time reporting & monthly investor dashboards.</p></div>
+        <div class="why-card"><i class="fas fa-lock gold-icon"></i><h3>Secure Investment Process</h3><p>Escrow accounts & regulated custodians.</p></div>
+        <div class="why-card"><i class="fas fa-headset gold-icon"></i><h3>Dedicated Investor Support</h3><p>24/7 priority support & personal RM.</p></div>
+    </div>
+</div>
+
+<!-- Testimonials Section (placeholder) -->
+<div class="container">
+    <div style="text-align: center; margin: 60px 0 30px;">
+        <span class="gold-border"></span>
+        <h2>What <span class="gold-text">Investors Say</span></h2>
+    </div>
+    <div class="swiper testimonial-swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><i class="fas fa-quote-left gold-text" style="font-size: 28px;"></i><p style="margin: 15px 0;">"Apex Capital’s disciplined approach gave me consistent 4% monthly returns with zero stress. Truly professional."</p><h4>— Rajesh K., Surat</h4></div>
+            <div class="swiper-slide"><i class="fas fa-quote-left gold-text" style="font-size: 28px;"></i><p style="margin: 15px 0;">"Capital protection + high returns seemed impossible until I joined Apex. Best decision for my family’s future."</p><h4>— Neha S., Mumbai</h4></div>
+            <div class="swiper-slide"><i class="fas fa-quote-left gold-text" style="font-size: 28px;"></i><p style="margin: 15px 0;">"Withdrawals are fast and the team is transparent. I’ve recommended to 5 friends already."</p><h4>— Amit P., Delhi</h4></div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+
+<!-- CTA Section -->
+<div class="container">
+    <div class="cta-block">
+        <h2 style="font-size: 2.2rem;">Start Your <span class="gold-text">Investment Journey</span> Today.</h2>
+        <p style="margin: 20px auto; max-width: 550px;">Secure your financial future with expert-managed plans, high monthly returns & capital protection.</p>
+        <button class="btn-gold" id="ctaJourneyBtn">Schedule a Call <i class="fas fa-calendar-alt"></i></button>
+    </div>
+</div>
+
+<!-- Contact Section + Form + WhatsApp + Updated Address -->
+<div class="container" id="contact">
+    <div style="text-align: center; margin-bottom: 30px;">
+        <span class="gold-border"></span>
+        <h2 style="margin-top: 20px;">Get In <span class="gold-text">Touch</span></h2>
+    </div>
+    <div class="contact-flex">
+        <div class="contact-info">
+            <i class="fas fa-phone-alt gold-text" style="font-size: 2rem;"></i>
+            <p style="font-size: 1.5rem; font-weight: 600; margin: 12px 0;">+91 9059980243</p>
+            <i class="fas fa-envelope gold-text" style="font-size: 2rem; margin-top: 20px;"></i>
+            <p style="font-size: 1.2rem;">apexcapital.inv@gmail.com</p>
+            <!-- Updated Address with gold highlight and PIN code -->
+            <div class="address-highlight">
+                <i class="fas fa-map-marker-alt gold-text" style="margin-right: 10px;"></i> 
+                <strong>Corporate Office:</strong> Hal Colony, Old Bowenpally, Secunderabad - 500011
+            </div>
+            <div style="margin-top: 35px;">
+                <a href="https://wa.me/919059980243?text=Hello%20Apex%20Capital" target="_blank" style="background:#25D366; display: inline-flex; gap: 12px; padding: 12px 28px; border-radius: 40px; color: white; text-decoration: none; font-weight: bold;"><i class="fab fa-whatsapp"></i> WhatsApp Now</a>
+            </div>
+        </div>
+        <div class="contact-form">
+            <form id="investorForm">
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Email Address" required>
+                <input type="tel" placeholder="Phone Number" required>
+                <select>
+                    <option>Investment Plan Interest</option>
+                    <option>Fixed Income (?1L+)</option>
+                    <option>Wealth Accelerator (?2.5L+)</option>
+                    <option>Institutional Plus (?10L+)</option>
+                </select>
+                <textarea rows="3" placeholder="Your message"></textarea>
+                <button type="submit" class="btn-gold" style="width:100%; justify-content: center;">Submit Inquiry</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Investor Registration Form (simple lead) & FAQ -->
+<div class="container" id="invest-reg">
+    <div style="background: #0f0f0f; border-radius: 32px; padding: 40px; margin: 40px 0;">
+        <h3>Investor <span class="gold-text">Registration</span> – Quick Access</h3>
+        <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
+            <input type="text" placeholder="Full Name" id="regName" style="flex:1;">
+            <input type="email" placeholder="Email" id="regEmail" style="flex:1;">
+            <input type="tel" placeholder="Mobile" id="regMobile" style="flex:1;">
+            <button class="btn-gold" id="registerBtn">Register Interest</button>
+        </div>
+        <p style="font-size: 0.8rem; margin-top: 12px;">Our team will contact you within 2 hours with plan details.</p>
+    </div>
+</div>
+
+<!-- FAQ Section -->
+<div class="container" id="faq">
+    <div style="text-align: center; margin: 40px 0 20px;">
+        <span class="gold-border"></span>
+        <h2>Frequently Asked <span class="gold-text">Questions</span></h2>
+    </div>
+    <div class="faq-item">
+        <div class="faq-question">What is the minimum investment amount? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-answer">The minimum investment for our flagship plan is ?1,00,000, offering 4% monthly returns with capital protection.</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-question">How are monthly returns paid? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-answer">Returns are credited to your registered bank account every month via NEFT/IMPS. You can also choose to reinvest.</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-question">Is my capital protected? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-answer">Yes, our flagship plan includes a capital protection guarantee. We use risk-hedged strategies and segregated accounts.</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-question">Can I withdraw my investment before maturity? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-answer">Absolutely, we offer flexible withdrawal options with a short notice period of 7 days, no penalty.</div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px;">
+            <div><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Cpath d='M30,10 L48,48 L40,48 L36,36 L24,36 L20,48 L12,48 L30,10 Z M30,20 L26,32 L34,32 L30,20Z' fill='%23d4af37' /%3E%3Ccircle cx='30' cy='30' r='28' stroke='%23d4af37' stroke-width='1.5' fill='none' /%3E%3Ctext x='60' y='38' font-family='Poppins' font-weight='800' font-size='22' fill='%23d4af37'%3EAPEX CAPITAL%3C/text%3E%3C/svg%3E" style="height: 50px;"><p>© 2025 Apex Capital. All rights reserved.<br>Hal Colony, Old Bowenpally, Secunderabad - 500011</p></div>
+            <div><h4 class="gold-text">Quick Links</h4><ul style="list-style: none;"><li><a href="#home" style="color:#ccc;">Home</a></li><li><a href="#investment-plans" style="color:#ccc;">Plans</a></li><li><a href="#contact" style="color:#ccc;">Contact</a></li></ul></div>
+            <div><h4 class="gold-text">Legal</h4><ul style="list-style: none;"><li>Privacy Policy</li><li>Terms of Investment</li><li>Compliance</li></ul></div>
+            <div><h4 class="gold-text">Connect</h4><i class="fab fa-linkedin" style="font-size: 24px; margin-right: 15px;"></i><i class="fab fa-twitter" style="font-size: 24px;"></i></div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    // GSAP simple animations (smooth)
+    const script = document.createElement('script');
+    script.src = "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js";
+    script.onload = () => {
+        gsap.from(".hero h1", { opacity: 0, y: 40, duration: 1 });
+        gsap.from(".investment-card", { opacity: 0, y: 30, stagger: 0.15, duration: 0.8, scrollTrigger: "#investment-plans" });
+    };
+    document.head.appendChild(script);
+
+    // ROI Calculator
+    const amountInput = document.getElementById('investAmount');
+    const rateInput = document.getElementById('returnRate');
+    const roiSpan = document.getElementById('roiResult');
+    function updateROI() {
+        let amt = parseFloat(amountInput.value) || 0;
+        let rate = parseFloat(rateInput.value) || 0;
+        let monthly = (amt * rate) / 100;
+        roiSpan.innerText = '?' + monthly.toLocaleString('en-IN', { maximumFractionDigits: 0 });
+    }
+    amountInput.addEventListener('input', updateROI);
+    rateInput.addEventListener('input', updateROI);
+    updateROI();
+
+    // FAQ toggle
+    document.querySelectorAll('.faq-item').forEach(item => {
+        item.addEventListener('click', () => {
+            item.classList.toggle('active');
+        });
+    });
+
+    // contact form & register
+    document.getElementById('investorForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert("Thank you! An Apex Capital advisor will contact you within 2 hours.");
+        e.target.reset();
+    });
+    document.getElementById('registerBtn').addEventListener('click', () => {
+        let name = document.getElementById('regName').value;
+        if(name) alert(`Thanks ${name}, your registration is received. Our team will WhatsApp you.`);
+        else alert("Please fill your name.");
+    });
+    document.getElementById('heroInvestBtn').addEventListener('click', () => document.getElementById('investment-plans').scrollIntoView({ behavior: 'smooth' }));
+    document.getElementById('learnMoreBtn').addEventListener('click', () => document.getElementById('about').scrollIntoView({ behavior: 'smooth' }));
+    document.getElementById('ctaJourneyBtn').addEventListener('click', () => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' }));
+
+    // Swiper for testimonials
+    new Swiper('.testimonial-swiper', {
+        loop: true,
+        autoplay: { delay: 4000 },
+        pagination: { el: '.swiper-pagination', clickable: true },
+        spaceBetween: 24,
+        slidesPerView: 1,
+        breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 2 } }
+    });
+
+    // mobile menu toggle
+    document.querySelector('.mobile-menu').addEventListener('click', () => {
+        let nav = document.querySelector('.nav-links');
+        nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+    });
+    window.addEventListener('resize', () => { if(window.innerWidth > 980) document.querySelector('.nav-links').style.display = 'flex'; });
+</script>
+</body>
+</html>
